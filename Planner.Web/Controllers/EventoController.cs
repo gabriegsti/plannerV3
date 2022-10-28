@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Planner.Dados.DTO;
 using Planner.Dados.Repositorios;
 using Planner.Entidades;
 using Planner.Web.Models;
@@ -11,7 +12,6 @@ namespace Planner.Web.Controllers
 
         public EventoController(EventoRepositorio repositorio)
         {
-
             _repositorio = repositorio;
         }
 
@@ -21,6 +21,20 @@ namespace Planner.Web.Controllers
         {
             var eventos = _repositorio.Buscar();
             return Ok(eventos);
+        }
+
+        [HttpPost]
+        [Route("CadastrarEvento")]
+        public IActionResult CadastrarEvento([FromBody] CreateEventoDTO eventoDto)
+        {
+            
+            Evento evento = new Evento();
+            evento.Titulo = eventoDto.Titulo;
+            evento.Data_Hora = eventoDto.Data_Hora;
+
+            var id = _repositorio.Adicionar(evento);
+            
+            return Ok();
         }
 
 
