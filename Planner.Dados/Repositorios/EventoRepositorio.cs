@@ -1,4 +1,6 @@
-﻿using Planner.Entidades;
+﻿using AutoMapper;
+using Planner.Dados.DTO.Evento;
+using Planner.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,6 @@ namespace Planner.Dados.Repositorios
     public class EventoRepositorio
     {
         private readonly Contexto _contexto;
-           
         public EventoRepositorio(Contexto contexto)
         {
           _contexto = contexto;
@@ -22,6 +23,15 @@ namespace Planner.Dados.Repositorios
             return _contexto.SaveChanges();
         }
 
+        public void AtualizarEvento(UpdateEventoDTO eventoNovo)
+        {
+            int id = eventoNovo.id_Evento;
+            Evento evento = _contexto.Evento.FirstOrDefault(evento => evento.Id_Evento == eventoNovo.id_Evento);
+            evento.Titulo = eventoNovo.Titulo;
+            evento.Data_Hora = eventoNovo.Data_Hora;
+
+            _contexto.SaveChanges();           
+        }
         public void Atualizar(Evento evento)
         {
             _contexto.Entry(evento).State = Microsoft.EntityFrameworkCore.EntityState.Modified;

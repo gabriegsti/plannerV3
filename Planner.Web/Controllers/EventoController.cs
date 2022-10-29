@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Planner.Dados.DTO;
+using Planner.Dados.DTO.Evento;
 using Planner.Dados.Repositorios;
 using Planner.Entidades;
 using Planner.Web.Models;
@@ -37,6 +38,30 @@ namespace Planner.Web.Controllers
             return Ok();
         }
 
+        [HttpPut]
+        [Route("AtualizaEvento")]
+        public IActionResult AtualizaEvento([FromBody] UpdateEventoDTO eventoDto)
+        {
+            Evento evento = new Evento();
+            if (evento == null)
+            {
+                return NotFound();
+            }
+            evento.Id_Evento = eventoDto.id_Evento;
+            evento.Titulo = eventoDto.Titulo;
+            evento.Data_Hora = eventoDto.Data_Hora;
+
+            _repositorio.AtualizarEvento(eventoDto);
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [Route("RemoverEventoPorId/{id}")]
+        public void RemoverEventoPorId(int id)
+        {
+            _repositorio.Excluir(id);
+            
+        }
 
         public IActionResult Consulta()
         {
