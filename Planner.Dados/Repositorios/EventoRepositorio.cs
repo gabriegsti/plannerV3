@@ -25,7 +25,6 @@ namespace Planner.Dados.Repositorios
 
         public void AtualizarEvento(UpdateEventoDTO eventoNovo)
         {
-            int id = eventoNovo.id_Evento;
             Evento evento = _contexto.Evento.FirstOrDefault(evento => evento.Id_Evento == eventoNovo.id_Evento);
             evento.Titulo = eventoNovo.Titulo;
             evento.Data_Hora = eventoNovo.Data_Hora;

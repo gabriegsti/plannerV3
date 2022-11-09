@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Planner.Dados.DTO.Materia;
 using Planner.Entidades;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,18 @@ namespace Planner.Dados.Repositorios
         public void Excluir(int id)
         {
             _contexto.Remove(_contexto.Materia.FirstOrDefault(x => x.Id_Materia == id));
+            _contexto.SaveChanges();
+        }
+
+        public void AtualizarMateria(UpdateMateriaDTO materiaDto)
+        {
+            Materia materia = _contexto.Materia.FirstOrDefault(materia => materia.Id_Materia == materiaDto.Id_Materia);
+            materia.Titulo = materiaDto.Titulo;
+            materia.Email = materiaDto.Email;
+            materia.Professor = materiaDto.Professor;
+            materia.Data_Inicio = materiaDto.Data_Inicio;
+            materia.Data_Fim = materiaDto.Data_Fim;
+
             _contexto.SaveChanges();
         }
     }

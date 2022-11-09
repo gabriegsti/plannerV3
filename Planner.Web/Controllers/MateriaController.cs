@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Planner.Dados.DTO.Materia;
 using Planner.Dados.Repositorios;
 using Planner.Entidades;
 using Planner.Web.Models;
@@ -13,6 +14,51 @@ namespace Planner.Web.Controllers
         {
             Repositorio = repositorio;
         }
+
+        [HttpGet]
+        [Route("IndexMateria")]
+        public IActionResult RecuperaMateria()
+        {
+            var materia = Repositorio.Buscar();
+            return Ok(materia);
+        }
+
+        [HttpPost]
+        [Route("CadastrarMateria")]
+        public IActionResult CadastrarEvento([FromBody] CreateMateriaDTO materiaDto)
+        {
+            Materia materia = new Materia();
+            materia.Titulo = materiaDto.Titulo;
+            materia.Email = materiaDto.Email;
+            materia.Professor = materiaDto.Professor;
+            materia.Data_Inicio = materiaDto.Data_Inicio;
+            materia.Data_Fim=materiaDto.Data_Fim;
+
+            Repositorio.Adicionar(materia);
+
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("AtualizaMateria")]
+        public IActionResult AtualizaMateria([FromBody] UpdateMateriaDTO materiaDto)
+        {
+            if (materiaDto == null)
+            {
+                return NotFound();
+            }
+            Repositorio.AtualizarMateria(materiaDto);
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [Route("RemoverMateriaPorId/{id}")]
+        public void RemoverEventoPorId(int id)
+        {
+            Repositorio.Excluir(id);
+
+        }
+
         public IActionResult Index()
         {
             List<MateriaViewModel> lst = new List<MateriaViewModel>();

@@ -54,7 +54,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Evento}/{action=Consulta}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/");
 app.MapRazorPages();
 app.UseCors(c =>
 {

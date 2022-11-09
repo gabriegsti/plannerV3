@@ -1,4 +1,5 @@
-﻿using Planner.Entidades;
+﻿using Planner.Dados.DTO.Anotacao;
+using Planner.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,16 @@ namespace Planner.Dados.Repositorios
         public void Excluir(int id)
         {
             _contexto.Remove(_contexto.Anotacao.FirstOrDefault(x => x.Id_Anotacao == id));
+            _contexto.SaveChanges();
+        }
+
+        public void AtualizarAnotacao(UpdateAnotacaoDTO anotacaoDTO)
+        {
+            Anotacao anotacao = _contexto.Anotacao.FirstOrDefault(anotacao => anotacao.Id_Anotacao == anotacaoDTO.Id_Anotacao);
+            anotacao.Titulo = anotacaoDTO.Titulo;
+            anotacao.Campo_Texto = anotacaoDTO.Campo_Texto;
+            anotacao.Link = anotacaoDTO.Link;
+
             _contexto.SaveChanges();
         }
     }
