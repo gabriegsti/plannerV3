@@ -25,5 +25,10 @@ namespace Planner.Dados.Repositorios
         {
             return _contexto.Documentos.AsEnumerable();
         }
+
+        public Documentos Buscar(int id)
+        {
+            return _contexto.Documentos.FirstOrDefault(x => x.Id_Documento == id);
+        }
     }
 }

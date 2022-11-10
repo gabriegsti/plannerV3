@@ -67,6 +67,17 @@ namespace Planner.Web.Controllers
             var documentos = _repositorio.Buscar();
             return Ok(documentos);
         }
+
+        [HttpGet]
+        [Route("DownloadDocumentos/{id}")]
+        public IActionResult DownloadDocumentos(int id)
+        {
+            var documentos = _repositorio.Buscar(id);
+            var titulo = documentos.Titulo;
+            var dados = documentos.documento;
+            var type = documentos.ContentType;
+            return File(dados[0], type, titulo);
+        }
         //foreach (var documento in documentos)
         //{
         //   data.Add(File(documento.documento[0], documento.ContentType, documento.Titulo.ToString()));
