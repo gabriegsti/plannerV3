@@ -17,9 +17,8 @@ namespace Planner.Dados
 
         public DbSet<Evento> Evento { get; set; }
         public DbSet<Materia> Materia { get; set; }
-        public DbSet<Aula> Aula { get; set; }
         public DbSet<Anotacao> Anotacao { get; set; }
-        public DbSet<Avaliacao> Avaliacao { get; set; }
+        public DbSet<Documentos> Documentos { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
 
     }

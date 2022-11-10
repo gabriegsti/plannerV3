@@ -17,7 +17,5 @@ namespace Planner.Entidades
         public string? Professor { get; set; }
         public DateTime? Data_Inicio { get; set; }
         public DateTime? Data_Fim { get; set; }
-        public List<Avaliacao>? LstAvaliacoes { get; set; }
-        public List<Aula>? LstAulas { get; set; }
     }
 }

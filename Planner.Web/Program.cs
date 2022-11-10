@@ -25,10 +25,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<MateriaRepositorio>();
 builder.Services.AddScoped<EventoRepositorio>();
-builder.Services.AddScoped<AvaliacaoRepositorio>();
-builder.Services.AddScoped<AulaRepositorio>();
 builder.Services.AddScoped<AnotacaoRepositorio>();
 builder.Services.AddScoped<UsuarioRepositorio>();
+builder.Services.AddScoped<DocumentosRepositorio>();
 
 var app = builder.Build();
 
