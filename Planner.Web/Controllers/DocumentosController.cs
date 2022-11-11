@@ -4,6 +4,12 @@ using Planner.Entidades;
 
 namespace Planner.Web.Controllers
 {
+
+    public class PostRequest
+    {
+        public IFormFile documento { get; set; }
+
+    }
     public class DocumentosController : ControllerBase    
     {
         //[HttpPost("upload")]
@@ -58,6 +64,7 @@ namespace Planner.Web.Controllers
             _repositorio.Adicionar(arquivo);
 
             return File(data[0], documento.ContentType, "BaixadoNoPlanner.png");
+
         }
 
         [HttpGet]
