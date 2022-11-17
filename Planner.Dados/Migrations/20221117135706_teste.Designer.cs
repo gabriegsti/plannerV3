@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Planner.Dados;
@@ -12,9 +13,10 @@ using Planner.Dados;
 namespace Planner.Dados.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20221117135706_teste")]
+    partial class teste
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,9 +63,6 @@ namespace Planner.Dados.Migrations
                     b.Property<string>("ContentType")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<int?>("Id_Usuario")
-                        .HasColumnType("integer");
 
                     b.Property<string>("Titulo")
                         .IsRequired()

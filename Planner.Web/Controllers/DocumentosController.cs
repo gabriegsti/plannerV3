@@ -85,9 +85,6 @@ namespace Planner.Web.Controllers
             var type = documentos.ContentType;
             return File(dados[0], type, titulo);
         }
-        //foreach (var documento in documentos)
-        //{
-        //   data.Add(File(documento.documento[0], documento.ContentType, documento.Titulo.ToString()));
-        //}
+       
     }
 }

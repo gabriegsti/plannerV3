@@ -17,5 +17,7 @@ namespace Planner.Entidades
         public List<byte[]>? documento { get; set; }
 
         public string ContentType { get; set; } 
+
+        public int? Id_Usuario { get; set; }
     }
 }
