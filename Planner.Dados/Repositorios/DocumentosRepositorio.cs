@@ -30,5 +30,11 @@ namespace Planner.Dados.Repositorios
         {
             return _contexto.Documentos.FirstOrDefault(x => x.Id_Documento == id);
         }
+
+        public void Excluir(int id)
+        {
+            _contexto.Remove(_contexto.Documentos.FirstOrDefault(x => x.Id_Documento == id));
+            _contexto.SaveChanges();
+        }
     }
 }

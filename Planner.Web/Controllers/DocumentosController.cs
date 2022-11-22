@@ -85,6 +85,13 @@ namespace Planner.Web.Controllers
             var type = documentos.ContentType;
             return File(dados[0], type, titulo);
         }
-       
+        [HttpDelete]
+        [Route("RemoverDocumentoPorId/{id}")]
+        public void RemoverDocumentoPorId(int id)
+        {
+            _repositorio.Excluir(id);
+        }
+        
+
     }
 }
