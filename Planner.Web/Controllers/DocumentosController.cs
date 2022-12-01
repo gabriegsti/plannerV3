@@ -12,25 +12,6 @@ namespace Planner.Web.Controllers
     }
     public class DocumentosController : ControllerBase    
     {
-        //[HttpPost("upload")]
-        //public async Task<ActionResult> Upload([FromForm] IFormFile documento)
-        //{
-        //    if (documento == null || documento.Count == 0 )
-        //        return BadRequest();
-
-        //    List<byte[]> data = new List<byte[]>();
-
-        //    if(documento.Length > 0)
-        //    {
-        //        using(var stream = new MemoryStream())
-        //        {
-        //            await documento.CopyToAsync(stream);
-        //            data.Add(stream.ToArray());
-        //        }
-        //    }
-
-        //    return Ok();
-        //}
 
         private readonly DocumentosRepositorio _repositorio;
 
